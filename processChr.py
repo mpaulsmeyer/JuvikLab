@@ -1,47 +1,13 @@
 #!/usr/bin/env python
+#processChr.py Script
 inFILE = open("/Users/mnpaul47/Desktop/combinedData.txt", "r")
 outFILE = open("/Users/mnpaul47/Desktop/itemizedData.txt", "w")
 
-#list of anthocyanins in maize
-compounds = ["AFZ-Pg35DG",\
-"anth-CY",\
-"anth-PG",\
-"C3DMG",\
-"C3G",\
-"C3MG",\
-"CAT-C35DG",\
-"CAT-C35DMG",\
-"Pg3DMG",\
-"Pg3G",\
-"Pg3MG",\
-"Pn3DMG",\
-"Pn3G",\
-"Pn3MG",\
-"ukn-?-1",\
-"ukn-cond-1",\
-"ukn-cy-1",\
-"ukn-cy-2",\
-"ukn-cy-3",\
-"ukn-husk-1",\
-"ukn-pg-1",\
-"ukn-pg-2",\
-"ukn-pg-3",\
-"ukn-pg-4",\
-"ukn-pgmg-2",\
-"ukn-pgmg-3"]
-
-#enzyme assays
-# compounds = ["C3DMG",\
-# "C3G",\
-# "C3MG",\
-# "D3DMG",\
-# "D3G",\
-# "D3MG",\
-# "Pg3DMG",\
-# "Pg3G",\
-# "Pg3MG",\
-# "Pn3DMG",\
-# "Pn3G"]
+#list of anthocyanins example
+compounds = ["AFZ-Pg35DG","anther-CY","anther-PG",\
+"C3DMG","CAT-C35DG","CAT-C35DMG","C3DMG","C3G",\
+"C3MG","D3DMG","D3G","D3MG","Pg3DMG","Pg3G",\
+"Pg3MG","Pn3DMG","Pn3G"]
 
 sample = {}
 for line in inFILE:
@@ -58,7 +24,8 @@ for line in inFILE:
 	line = line.split("\t")
 	if line[3][-2:]==".D":
 		ID = line[3]
-	if (line[1] != "Sample Name") & (line[2] != "NA") & (line[0] != "") & (line[1]!="Injection Data File Name"):
+	if (line[1] != "Sample Name") & (line[2] != "NA") \
+& (line[0] != "")& (line[1]!="Injection Data File Name"):
 		sample[ID]["Date"] = line[2].split(" ")[0]
 		if line[4] != "NA":
 			sample[ID][line[4]] = float(line[7])
